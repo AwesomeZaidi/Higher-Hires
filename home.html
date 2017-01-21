@@ -6,12 +6,12 @@
 <link rel="icon" 
       type="image/png" 
       href="https://raw.githubusercontent.com/arjunmehta/heartbeats/image/heartbeats.png">
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://cdn.pubnub.com/pubnub-3.7.14.min.js"></script>
     <script src="https://cdn.pubnub.com/webrtc/webrtc.js"></script>
 
-    <script src="js/clmtrackr.js"></script>
-    <script src="js/model_pca_20_svm.js"></script>
+    <script src="capture-video-frame.js"></script>
 
 </head>
 <body>
@@ -53,24 +53,20 @@
     </script>
 
 
-    <div id="out"></div>
+    <img id="my-screenshot" />
     <button onclick="ss()">Shot!</button>
     <canvas id="thecanvas"></canvas>
 
-<script type="text/javascript">
-function ss() {
-        var video = document.getElementById('vid-box');
-        var canvas = document.createElement("canvas");
-        canvas.width = video.videoWidth * 1;
-        canvas.height = video.videoHeight * 1;
-        canvas.getContext('2d')
-              .drawImage(video, 0, 0, canvas.width, canvas.height);
- 
-        var img = document.createElement("img");
-        img.src = canvas.toDataURL();
-        document.getElementById('out').prepend(img);
-    
-}
-</script>
+    <script type="text/javascript">
+        function ss() {
+            var frame = captureVideoFrame('vid-box', 'png');
+
+            // Show the image
+            var img = document.getElementById('my-screenshot');
+            img.setAttribute('src', frame.dataUri);
+            
+        }
+
+    </script>
 </body>
 </html>
