@@ -1,12 +1,11 @@
 var express = require("express");
-var path = require("path");
+//var path = require("path");
 
 const PORT = process.env.port || process.env.PORT || 3000;
 
 var app = express();
 
 app.get('/', (req, res) => {
-	console.log("Path>>", path.dirname());
 	res.sendFile("./home.html");
 }) 
 
