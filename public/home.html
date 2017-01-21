@@ -111,10 +111,6 @@
             var img = document.getElementById('my-screenshot');
             img.setAttribute('src', frame.dataUri);
 
-            var m = frame.dataUri.replace(/data\:image\/png;base64,/, '');
-
-            console.log("m>>", m);
-
             //var x = document.getElementById("my-screenshot");
 
             //var x = getBase64Image(document.getElementById('my-screenshot'));
@@ -123,9 +119,9 @@
                 url: "https://westus.api.cognitive.microsoft.com/emotion/v1.0/recognize",
                 headers: {
                     'Ocp-Apim-Subscription-Key':'7805dd109acd4b36a3908322d04ce7d0',
-                    'Content-Type':'application/octet-stream'
+                    'Content-Type':'application/json'
                 },
-                data: m,
+                url: "http://www.thewrap.com/wp-content/uploads/2015/11/Donald-Trump.jpg",
                 processData: false,
                 contentType: false,
                 type: 'POST',
