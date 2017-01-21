@@ -113,6 +113,7 @@
 
             var formData = new FormData();
             formData.append('file', frame.blob, 'my-screenshot.' + frame.format);
+            console.log(">>", formData);
 
             $.ajax({
                 url: "https://westus.api.cognitive.microsoft.com/emotion/v1.0/recognize",
@@ -120,7 +121,7 @@
                     'Ocp-Apim-Subscription-Key':'7805dd109acd4b36a3908322d04ce7d0',
                     'Content-Type':'application/json'
                 },
-                data: formData,
+                url: formData,
                 processData: false,
                 contentType: false,
                 type: 'POST',
