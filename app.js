@@ -8,7 +8,7 @@ var app = express();
 app.use(express.static(path.join(__dirname, './public')));
 
 app.get('/', (req, res) => {
-	res.sendFile("./home.html");
+	res.sendFile("home.html");
 }) 
 
 app.listen(PORT, (err) => {
