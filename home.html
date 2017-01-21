@@ -11,7 +11,53 @@
     <script src="https://cdn.pubnub.com/pubnub-3.7.14.min.js"></script>
     <script src="https://cdn.pubnub.com/webrtc/webrtc.js"></script>
 
-    <script src="capture-video-frame.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        (function (root, factory) {
+            if (typeof define === 'function' && define.amd) {
+                define([], factory);
+            } else {
+                root.captureVideoFrame = factory();
+            }
+        }(this, function () {
+            return function captureVideoFrame(video, format) {
+                if (typeof video === 'string') {
+                    video = document.getElementById(video);
+                }
+
+                format = format || 'jpeg';
+
+                if (!video || (format !== 'png' && format !== 'jpeg')) {
+                    return false;
+                }
+
+                var canvas = document.createElement("CANVAS");
+
+                canvas.width = video.videoWidth;
+                canvas.height = video.videoHeight;
+
+                canvas.getContext('2d').drawImage(video, 0, 0);
+
+                return canvas.toDataURL();
+                /*var dataUri = canvas.toDataURL('img/' + format);
+                var data = dataUri.split(',')[1];
+                var mimeType = dataUri.split(';')[0].slice(5)
+
+                var bytes = window.atob(data);
+                var buf = new ArrayBuffer(bytes.length);
+                var arr = new Uint8Array(buf);
+
+                for (var i = 0; i < bytes.length; i++) {
+                    arr[i] = bytes.charCodeAt(i);
+                }
+
+                var blob = new Blob([ arr ], { type: mimeType });
+                return { blob: blob, dataUri: dataUri, format: format };*/
+            };
+        }));
+
+    </script>
 
 </head>
 <body>
@@ -30,18 +76,18 @@
     <script type="text/javascript">
         var video_out = document.getElementById("vid-box");
         function login(form) {
-	        var phone = window.phone = PHONE({
+            var phone = window.phone = PHONE({
                 number        :  form.username.value || "Anonymous", // listen on username line else Anonymous
                 publish_key   : 'pub-c-3b06bc4e-a45c-4ece-ae2b-97c2934f5163',
                 subscribe_key : 'sub-c-9f9f06a8-dfbd-11e6-a291-0619f8945a4f',
-	        });
-        console.log("Phone", phone);	
+            });
+        
         phone.ready(function(){ form.username.style.background="#55ff5b"; });
         phone.receive(function(session){
             session.connected(function(session) { video_out.appendChild(session.video); });
             session.ended(function(session) { video_out.innerHTML=''; });
-	    });
-	    return false; 	// So the form does not submit.
+        });
+        return false;   // So the form does not submit.
         }
 
         function makeCall(form){
@@ -59,13 +105,63 @@
 
     <script type="text/javascript">
         function ss() {
-            var frame = captureVideoFrame('vid-box', 'png');
+            var vid = document.getElementById("vid-box").firstChild;
+            var frame = captureVideoFrame(vid, 'png');
 
             // Show the image
-            var img = document.getElementById('my-screenshot');
-            img.setAttribute('src', frame.dataUri);
+            /*var img = document.getElementById('my-screenshot');
+            img.setAttribute('src', frame.dataUri);*/
+ 
+            // Upload the image 
+            /*var formData = new FormData();
+            formData.append('file', frame.blob);*/
+
+            console.log("frame>>", frame);
+
+            $.ajax({
+                url: "https://westus.api.cognitive.microsoft.com/emotion/v1.0/recognize",
+                headers: {
+                    'Ocp-Apim-Subscription-Key':'7805dd109acd4b36a3908322d04ce7d0',
+                    'Content-Type':'application/octet-stream'
+                },
+                data: makeblob(frame),
+                contentType: 'application/octet-stream',
+                processData: false,
+                type: 'POST',
+                success: function(data){
+                    console.log(data);
+                },
+                error: function(err) {
+                    console.log("Error", err);
+                }
+            });
+            
+        
             
         }
+
+        makeblob = function (dataURL) {
+            var BASE64_MARKER = ';base64,';
+            if (dataURL.indexOf(BASE64_MARKER) == -1) {
+                var parts = dataURL.split(',');
+                var contentType = parts[0].split(':')[1];
+                var raw = decodeURIComponent(parts[1]);
+                return new Blob([raw], { type: contentType });
+            }
+            var parts = dataURL.split(BASE64_MARKER);
+            var contentType = parts[0].split(':')[1];
+            var raw = window.atob(parts[1]);
+            var rawLength = raw.length;
+
+            var uInt8Array = new Uint8Array(rawLength);
+
+            for (var i = 0; i < rawLength; ++i) {
+                uInt8Array[i] = raw.charCodeAt(i);
+            }
+
+            return new Blob([uInt8Array], { type: contentType });
+        }
+
 
     </script>
 </body>
