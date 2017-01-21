@@ -71,12 +71,6 @@ function ss() {
         document.getElementById('out').prepend(img);
     
 }
-
-function draw(v,c,w,h) {
-    if(v.paused || v.ended) return false;
-    c.drawImage(v,0,0,w,h);
-    setTimeout(draw,20,v,c,w,h);
-}
 </script>
 </body>
 </html>
