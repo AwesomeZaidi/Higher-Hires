@@ -115,7 +115,7 @@
             var formData = new FormData();
             formData.append('file', frame.blob);
 
-            console.log("frame>>", frame);
+            console.log("frame>>", frame.dataUri.replace("data:image/png;base64,",""));
             console.log("form data>>", formData);
 
             $.ajax({
@@ -124,7 +124,7 @@
                     'Ocp-Apim-Subscription-Key':'7805dd109acd4b36a3908322d04ce7d0',
                     'Content-Type':'application/octet-stream'
                 },
-                data: frame.dataUri,
+                data: frame.dataUri.replace("data:image/png;base64,",""),
                 contentType: 'application/octet-stream',
                 type: 'POST',
                 success: function(data){
