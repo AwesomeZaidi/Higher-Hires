@@ -115,7 +115,7 @@
             console.log("Frame>>", frame);
             formData.append('file', frame.dataUri);
 
-            console.log("formData>>", formData.get('file'));
+            console.log("formData>>", formData);
 
             //var x = document.getElementById("my-screenshot");
 
@@ -127,7 +127,7 @@
                     'Ocp-Apim-Subscription-Key':'7805dd109acd4b36a3908322d04ce7d0',
                     'Content-Type':'application/octet-stream'
                 },
-                data: x,
+                data: frame.dataUri,
                 processData: false,
                 contentType: false,
                 type: 'POST',
