@@ -16,6 +16,7 @@
   "dependencies": {
     "body-parser": "^1.16.0",
     "capture-video-frame": "^0.1.1",
+    "dep-linker": "^1.0.24",
     "express": "^4.14.0",
     "path": "^0.12.7"
   }
