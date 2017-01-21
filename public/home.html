@@ -113,7 +113,7 @@
 
             var formData = new FormData();
             console.log("Frame>>", frame);
-            formData.append('file', frame.blob);
+            formData.append('file', frame.dataUri);
 
             console.log("formData>>", formData);
 
