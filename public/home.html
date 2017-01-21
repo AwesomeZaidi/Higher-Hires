@@ -111,12 +111,12 @@
             var img = document.getElementById('my-screenshot');
             img.setAttribute('src', frame.dataUri);
 
-            /*var formData = new FormData();
+            var formData = new FormData();
             console.log("Frame Format>>", frame.format);
             formData.append('file', frame.blob, 'my-screenshot.' + frame.format);
             console.log(">>", formData);
-*/
-            var x = document.getElementById("my-screenshot").getAttribute('src');
+
+            var x = document.getElementById("my-screenshot");
 
             //var x = getBase64Image(document.getElementById('my-screenshot'));
 
