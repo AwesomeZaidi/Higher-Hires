@@ -71,7 +71,7 @@
         var thecanvas = document.getElementById("thecanvas");
         var context = thecanvas.getContext('2d');
         context.drawImage(video, 0, 0, 220, 150);
-        var dataURL = thecanvas.toDataURL();
+        var dataURL = thecanvas.toDataURL('image/png');
 
         //create img
         var img = document.createElement('img');
