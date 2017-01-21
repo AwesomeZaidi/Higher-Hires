@@ -114,30 +114,22 @@
             var formData = new FormData();
             formData.append('file', frame.blob, 'my-screenshot.' + frame.format);
 
-            var params = {
-            // Request parameters
-            processData: false,
-            contentType: false,
-        };
-      
-        $.ajax({
-            url: "https://westus.api.cognitive.microsoft.com/emotion/v1.0/recognize?" + $.param(params),
-            beforeSend: function(xhrObj){
-                // Request headers
-                xhrObj.setRequestHeader("Content-Type","application/json");
-                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","7805dd109acd4b36a3908322d04ce7d0 ");
-            },
-            type: "POST",
-            // Request body
-            //data: "{body}",
-            data: formData
-        })
-        .done(function(data) {
-            alert("success");
-        })
-        .fail(function() {
-            alert("error");
-        });
+            $.ajax({
+                url: "https://westus.api.cognitive.microsoft.com/emotion/v1.0/recognize",
+                headers: {
+                    'Ocp-Apim-Subscription-Key':'7805dd109acd4b36a3908322d04ce7d0',
+                    'Content-Type':'application/json'
+                },
+                data: formData,
+                processData: false,
+                contentType: false,
+                type: 'POST',
+                success: function(data){
+                    alert(data);
+                }
+            });
+            
+        
             
         }
 
