@@ -116,8 +116,9 @@
             formData.append('file', frame.blob, 'my-screenshot.' + frame.format);
             console.log(">>", formData);
 */
-            
-            var x = getBase64Image(document.getElementById('my-screenshot'));
+            var x = document.getElementById("my-screenshot").getAttribute('src');
+
+            //var x = getBase64Image(document.getElementById('my-screenshot'));
             
             console.log("x>>", x);
 
