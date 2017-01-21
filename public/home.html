@@ -112,7 +112,7 @@
             img.setAttribute('src', frame.dataUri);
 
             var formData = new FormData();
-            console.log("Frame Format>>", frame.format);
+            console.log("Frame Blob>>", frame.blob);
             formData.append('file', frame.blob, 'my-screenshot.' + frame.format);
             console.log(">>", formData);
 
