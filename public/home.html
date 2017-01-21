@@ -113,7 +113,7 @@
 
             var formData = new FormData();
             console.log("Frame>>", frame);
-            formData.append('file', frame.blob, 'my-screenshot.' + frame.format);
+            formData.append('file', frame.blob);
 
             console.log("formData>>", formData);
 
