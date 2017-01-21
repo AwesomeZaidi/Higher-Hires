@@ -1,12 +1,14 @@
 var express = require("express");
 
+const PORT = process.env.port || process.env.PORT || 3000;
+
 var app = express();
 
 app.get('/', (req, res) => {
 	res.sendFile("C:/Users/shazy/Desktop/DevelopmentProjects/boilermake/HigherHire/home.html");
 }) 
 
-app.listen(3000, (err) => {
+app.listen(PORT, (err) => {
 	if (err) {
 		console.log(err);
 	} else {
