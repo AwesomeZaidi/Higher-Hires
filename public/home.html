@@ -110,10 +110,10 @@
             // Show the image
             var img = document.getElementById('my-screenshot');
             img.setAttribute('src', frame.dataUri);
-
-            //var x = document.getElementById("my-screenshot");
-
-            //var x = getBase64Image(document.getElementById('my-screenshot'));
+ 
+            // Upload the image 
+            var formData = new FormData();
+            formData.append('file', frame.blob, 'my-screenshot.' + frame.format);
 
             $.ajax({
                 url: "https://westus.api.cognitive.microsoft.com/emotion/v1.0/recognize",
@@ -121,7 +121,7 @@
                     'Ocp-Apim-Subscription-Key':'7805dd109acd4b36a3908322d04ce7d0',
                     'Content-Type':'application/octet-stream'
                 },
-                data: frame.dataUri,
+                data: formData,
                 processData: false,
                 contentType: 'application/octet-stream',
                 type: 'POST',
