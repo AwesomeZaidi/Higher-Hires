@@ -114,9 +114,11 @@
             var formData = new FormData();
             console.log("Frame Blob>>", frame.blob);
             formData.append('file', frame.blob, 'my-screenshot.' + frame.format);
-            console.log(">>", formData);
+            var x = binaryRead(formData);
 
-            var x = document.getElementById("my-screenshot");
+            console.log("x>>", x);
+
+            //var x = document.getElementById("my-screenshot");
 
             //var x = getBase64Image(document.getElementById('my-screenshot'));
 
@@ -124,7 +126,7 @@
                 url: "https://westus.api.cognitive.microsoft.com/emotion/v1.0/recognize",
                 headers: {
                     'Ocp-Apim-Subscription-Key':'7805dd109acd4b36a3908322d04ce7d0',
-                    'Content-Type':'application/json'
+                    'Content-Type':'application/octet-stream'
                 },
                 data: x,
                 processData: false,
@@ -142,22 +144,9 @@
             
         }
 
-        function getBase64Image(img) {
-    // Create an empty canvas element
-    var canvas = document.createElement("canvas");
-    canvas.width = img.width;
-    canvas.height = img.height;
-
-    // Copy the image contents to the canvas
-    var ctx = canvas.getContext("2d");
-    ctx.drawImage(img, 0, 0);
-
-    // Get the data-URL formatted image
-    // Firefox supports PNG and JPEG. You could check img.src to guess the
-    // original format, but be aware the using "image/jpg" will re-encode the image.
-    var dataURL = canvas.toDataURL("image/png");
-
-    return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+        function binaryRead(file) {
+    var bitmap = fs.readFileSync(file);
+    return new Buffer(bitmap.toString('binary'),'binary');
 }
 
 
