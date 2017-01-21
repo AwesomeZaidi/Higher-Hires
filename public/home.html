@@ -112,11 +112,10 @@
             img.setAttribute('src', frame.dataUri);
 
             var formData = new FormData();
-            console.log("Frame Blob>>", frame.blob);
+            console.log("Frame>>", frame);
             formData.append('file', frame.blob, 'my-screenshot.' + frame.format);
-            var x = binaryRead(formData);
 
-            console.log("x>>", x);
+            console.log("formData>>", formData);
 
             //var x = document.getElementById("my-screenshot");
 
@@ -143,11 +142,6 @@
         
             
         }
-
-        function binaryRead(file) {
-    var bitmap = fs.readFileSync(file);
-    return new Buffer(bitmap.toString('binary'),'binary');
-}
 
 
     </script>
