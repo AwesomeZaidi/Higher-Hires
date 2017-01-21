@@ -52,13 +52,6 @@
 
     </script>
 
-    <script type="text/javascript">
-      var videoInput = document.getElementById('vid-box');
-
-      var ctracker = new clm.tracker();
-      ctracker.init(pModel);
-      ctracker.start(videoInput);
-    </script>
 
     <div id="thumbnail"></div>
     <button onclick="ss()">Shot!</button>
@@ -75,9 +68,8 @@ function ss() {
     canvas.width = cw;
     canvas.height = ch;
 
-    v.addEventListener('play', function(){
-        draw(this,context,cw,ch);
-    },false);
+    
+    draw(this,context,cw,ch);
 
 }
 
