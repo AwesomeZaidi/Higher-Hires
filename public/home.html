@@ -119,11 +119,11 @@
                 url: "https://westus.api.cognitive.microsoft.com/emotion/v1.0/recognize",
                 headers: {
                     'Ocp-Apim-Subscription-Key':'7805dd109acd4b36a3908322d04ce7d0',
-                    'Content-Type':'application/json'
+                    'Content-Type':'application/octet-stream'
                 },
-                data: JSON.stringify({"url": "http://www.thewrap.com/wp-content/uploads/2015/11/Donald-Trump.jpg"}),
+                data: frame.dataUri,
                 processData: false,
-                contentType: 'application/json',
+                contentType: 'application/octet-stream',
                 type: 'POST',
                 success: function(data){
                     console.log(data);
