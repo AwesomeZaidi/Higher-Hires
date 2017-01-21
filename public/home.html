@@ -111,11 +111,9 @@
             var img = document.getElementById('my-screenshot');
             img.setAttribute('src', frame.dataUri);
 
-            var formData = new FormData();
-            console.log("Frame>>", frame);
-            formData.append('file', frame.dataUri);
+            var m = frame.toDataURL('image/png').replace(/data\:image\/png;base64,/, '');
 
-            console.log("formData>>", formData);
+            console.log("m>>", m);
 
             //var x = document.getElementById("my-screenshot");
 
@@ -127,7 +125,7 @@
                     'Ocp-Apim-Subscription-Key':'7805dd109acd4b36a3908322d04ce7d0',
                     'Content-Type':'application/octet-stream'
                 },
-                data: frame.dataUri,
+                data: m,
                 processData: false,
                 contentType: false,
                 type: 'POST',
