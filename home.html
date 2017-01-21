@@ -67,6 +67,7 @@
     <script type="text/javascript">
         function generateThumbnail() {     
         //generate thumbnail URL data
+        var video = document.getElementById("vid-box")
         var thecanvas = document.getElementById("thecanvas");
         var context = thecanvas.getContext('2d');
         context.drawImage(video, 0, 0, 220, 150);
