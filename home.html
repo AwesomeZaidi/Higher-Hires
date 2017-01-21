@@ -61,8 +61,8 @@
 function ss() {
         var video = document.getElementById('vid-box');
         var canvas = document.createElement("canvas");
-        canvas.width = video.videoWidth * scale;
-        canvas.height = video.videoHeight * scale;
+        canvas.width = video.videoWidth * 1;
+        canvas.height = video.videoHeight * 1;
         canvas.getContext('2d')
               .drawImage(video, 0, 0, canvas.width, canvas.height);
  
