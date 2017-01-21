@@ -119,16 +119,14 @@
             var x = document.getElementById("my-screenshot").getAttribute('src');
 
             //var x = getBase64Image(document.getElementById('my-screenshot'));
-            
-            console.log("x>>", x);
 
             $.ajax({
                 url: "https://westus.api.cognitive.microsoft.com/emotion/v1.0/recognize",
                 headers: {
                     'Ocp-Apim-Subscription-Key':'7805dd109acd4b36a3908322d04ce7d0',
-                    'Content-Type':'application/octet-stream'
+                    'Content-Type':'application/json'
                 },
-                body: x.data,
+                data: x,
                 processData: false,
                 contentType: false,
                 type: 'POST',
