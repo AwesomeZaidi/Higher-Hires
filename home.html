@@ -62,10 +62,12 @@
 
     <div id="thumbnail"></div>
     <button onclick="generateThumbnail()">Shot!</button>
+    <canvas id="thecanvas"></canvas>
 
     <script type="text/javascript">
         function generateThumbnail() {     
         //generate thumbnail URL data
+        var thecanvas = document.getElementById("thecanvas");
         var context = thecanvas.getContext('2d');
         context.drawImage(video, 0, 0, 220, 150);
         var dataURL = thecanvas.toDataURL();
