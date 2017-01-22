@@ -9,7 +9,23 @@
 
 	<script type="text/javascript">
 		
-		var data = [
+		$.ajax({
+                url: "/points",
+                headers: {
+                    'Content-Type':'application/json'
+                },
+                contentType: 'application/json',
+                processData: false,
+                type: 'GET',
+                success: function(data){
+                    console.log(data);
+                },
+                error: function(err) {
+                    console.log("Error", err);
+                }
+            });
+		
+		var ppoints = [
 		  {
 		    x: ['giraffes', 'orangutans', 'monkeys'],
 		    y: [20, 14, 23],
@@ -17,7 +33,7 @@
 		  }
 		];
 
-		Plotly.newPlot('tester', data);
+		Plotly.newPlot('tester', ppoints);
 
 	</script>
 
