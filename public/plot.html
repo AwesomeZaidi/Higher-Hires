@@ -9,6 +9,8 @@
 	<div id="tester"></div>
 
 	<script type="text/javascript">
+
+		var resultantArray;
 		
 		$.ajax({
                 url: "/points",
@@ -33,6 +35,9 @@
 		    type: 'bar'
 		  }
 		];
+
+		resultantArray = data;
+		console.log("RESULT: " + consultantArray)
 
 		Plotly.newPlot('tester', ppoints);
 
