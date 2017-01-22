@@ -84,7 +84,25 @@
 
         function re() {
             window.location = "http://higherhires.herokuapp.com/plot";
+
+            $.ajax({
+                url: "http;//higherhires.herokuapp.com/clear",
+                headers: {
+                    'Content-Type':'application/json'
+                },
+                contentType: 'application/json',
+                processData: false,
+                dataType: 'json',
+                type: 'GET',
+                success: function(data){
+                    console.log("Data Posted");
+                },
+                error: function(err) {
+                    console.log("Error", err);
+                }
+            });
         }
+         
          document.addEventListener("DOMContentLoaded", function(event) {
             console.log("DOM fully loaded and parsed");
 
