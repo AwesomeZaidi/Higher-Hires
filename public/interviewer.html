@@ -67,8 +67,8 @@
 
     <div>
         <h3>Analysis</h3>
-        <h4>Happiness:</h4><h4 id="e1"></h4>
-        <h4>Heart Rate:</h4><h4 id="hr"></h4>
+        <label>Happiness:</label><label id="e1"></label>
+        <label>Heart Rate:</label><label id="hr"></label>
     </div>
 
     <button class="waves-effect waves-light orange darken-1 btn" onclick="login()">Ready?</button>
@@ -130,7 +130,7 @@
                 success: function(data){
                     console.log(data);
                     document.getElementById('e1').innerHTML = data[0].scores.happiness;
-                    //pp(data);
+                    pp(data);
                 },
                 error: function(err) {
                     console.log("Error", err);
