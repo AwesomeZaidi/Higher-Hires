@@ -7,12 +7,12 @@ var app = express();
 
 depLinker.linkDependenciesTo('./public')
 
-app.get('/interviwer', (req, res) => {
-	res.sendFile(__dirname + "/public/interviwer.html");
+app.get('/interviewer', (req, res) => {
+	res.sendFile(__dirname + "/public/interviewer.html");
 }) 
 
-app.get('/interviwee', (req, res) => {
-	res.sendFile(__dirname + "/public/interviwee.html");
+app.get('/interviewee', (req, res) => {
+	res.sendFile(__dirname + "/public/interviewee.html");
 }) 
 
 app.listen(PORT, (err) => {
