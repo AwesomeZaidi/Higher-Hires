@@ -12,6 +12,7 @@
     <script src="https://cdn.pubnub.com/pubnub-3.7.14.min.js"></script>
     <script src="https://cdn.pubnub.com/webrtc/webrtc.js"></script>
 
+
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 
     <script type="text/javascript">
@@ -86,8 +87,6 @@
         }, 5000);
           });
 
-
-
         var video_out = document.getElementById("vid-box");
         function login() {
             var phone = window.phone = PHONE({
@@ -137,15 +136,31 @@
                 type: 'POST',
                 success: function(data){
                     console.log(data);
-                    document.getElementById("e1").innerHTML = data[0].scores.happiness;
+                    pp(data);
                 },
                 error: function(err) {
                     console.log("Error", err);
                 }
             });
-            
-        
-            
+        }
+
+        function pp(data) {
+            $.ajax({
+                url: "/plot",
+                headers: {
+                    'Content-Type':'application/json'
+                },
+                data: data,
+                contentType: 'application/json',
+                processData: false,
+                type: 'POST',
+                success: function(data){
+                    console.log("Data Posted");
+                },
+                error: function(err) {
+                    console.log("Error", err);
+                }
+            });
         }
 
         makeblob = function (dataURL) {
