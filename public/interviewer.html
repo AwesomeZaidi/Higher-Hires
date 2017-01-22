@@ -173,6 +173,7 @@ font-family: 'Ubuntu', sans-serif;
                 type: 'POST',
                 success: function(data){
                     console.log(data);
+                    document.getElementById('e1').innerHTML = data[0].scores.happiness;
                     pp(data);
                 },
                 error: function(err) {
@@ -181,13 +182,13 @@ font-family: 'Ubuntu', sans-serif;
             });
         }
 
-        function pp(data) {
+        function pp(dat) {
             $.ajax({
                 url: "/plot",
                 headers: {
                     'Content-Type':'application/json'
                 },
-                data: JSON.stringify(data[0].scores),
+                data: JSON.stringify(dat[0].scores),
                 contentType: 'application/json',
                 processData: false,
                 dataType: 'json',
