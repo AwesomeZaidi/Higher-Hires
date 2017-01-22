@@ -77,9 +77,8 @@
 
          document.addEventListener("DOMContentLoaded", function(event) {
             console.log("DOM fully loaded and parsed");
-            if (document.getElementById('vid-box').firstChild) {
-                setInterval(function(){ ss(); }, 3000);
-            }
+            
+            setInterval(function(){  if (document.getElementById('vid-box').firstChild) {ss(); }}, 3000);
           });
 
 
