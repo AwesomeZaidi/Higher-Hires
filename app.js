@@ -13,7 +13,11 @@ app.use(bodyParser.json())
 
 app.get('/interviewer', (req, res) => {
 	res.sendFile(__dirname + "/public/interviewer.html");
-}) 
+})
+
+app.get('/index', (req, res) => {
+	res.sendFile(__dirname + "/public/index.html");
+})
 
 app.get('/interviewee', (req, res) => {
 	res.sendFile(__dirname + "/public/interviewee.html");
