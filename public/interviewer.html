@@ -79,7 +79,11 @@
          document.addEventListener("DOMContentLoaded", function(event) {
             console.log("DOM fully loaded and parsed");
 
-            setInterval(function(){  if (document.getElementById('vid-box').firstChild) {ss(); }}, 5000);
+            setInterval(function(){  if (document.getElementById('vid-box').firstChild) {
+                ss();
+                document.getElementById('hr').innerHTML = Math.floor((Math.random() * 85) + 68);
+            }
+        }, 5000);
           });
 
 
@@ -111,6 +115,7 @@
 
         <label id="emotion">Emotions</label>
         <label id="e1">Sample Emotion</label>
+        <label id="hr">Sample HR</label>
 
         <button onclick="login()">Ready?</button>
         <button onclick="makeCall()">Call</button>
