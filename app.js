@@ -28,7 +28,7 @@ app.get('/plot', (req, res) => {
 })
 
 app.post('/plot', (req, res) => {
-	console.log("req>>",req);
+	console.log("req>>",req.body);
 })
 
 app.listen(PORT, (err) => {
