@@ -29,8 +29,9 @@ app.get('/plot', (req, res) => {
 })
 
 app.post('/plot', (req, res) => {
-	points.append(JSON.parse(req.body));
 	console.log("req>>",req.body);
+	points.append(req.body);
+	
 })
 
 app.get('/points', (req, res) => {
@@ -39,8 +40,8 @@ app.get('/points', (req, res) => {
 	} else {
 		res.send("Points Empty");
 	}
-	
 })
+
 
 app.listen(PORT, (err) => {
 	if (err) {
