@@ -30,6 +30,7 @@ app.get('/plot', (req, res) => {
 
 app.post('/plot', (req, res) => {
 	points.append(req.body);
+	res.send(req.body);
 })
 
 app.get('/points', (req, res) => {

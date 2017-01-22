@@ -67,7 +67,11 @@
 
     <div>
         <h3>Analysis</h3>
-        <label>Happiness:</label><label id="e1"></label>
+        <label>Anger:</label><label id="e1"></label>
+        <label>Contempt:</label><label id="e2"></label>
+        <label>Fear:</label><label id="e3"></label>
+        <label>Happiness:</label><label id="e4"></label>
+        <label>Surprise:</label><label id="e5"></label>
         <label>Heart Rate:</label><label id="hr"></label>
     </div>
 
@@ -129,7 +133,11 @@
                 type: 'POST',
                 success: function(data){
                     console.log(data);
-                    document.getElementById('e1').innerHTML = data[0].scores.happiness;
+                    document.getElementById('e1').innerHTML = data[0].scores.anger;
+                    document.getElementById('e2').innerHTML = data[0].scores.contempt;
+                    document.getElementById('e3').innerHTML = data[0].scores.fear;
+                    document.getElementById('e4').innerHTML = data[0].scores.happiness;
+                    document.getElementById('e5').innerHTML = data[0].scores.surprise;
                     pp(data);
                 },
                 error: function(err) {
