@@ -29,8 +29,8 @@ app.get('/plot', (req, res) => {
 })
 
 app.post('/plot', (req, res) => {
-	console.log("req>>",req.body);
-	points.append(req.body);
+	//console.log("req>>",req.body);
+	points.push(req.body);
 	
 })
 
