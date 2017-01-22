@@ -28,11 +28,21 @@
     <script src="https://cdn.pubnub.com/pubnub-3.7.14.min.js"></script>
     <script src="https://cdn.pubnub.com/webrtc/webrtc.js"></script>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+
 </head>
 
 <body>
 
-    <div id="vid-box"></div>
+    <center>
+        <div id="vid-box"></div>    
+    </center>
+
+    <button class="waves-effect waves-light orange darken-1 btn" onclick="login()">Ready?</button>
+    <button class="waves-effect waves-light orange darken-1 btn" onclick="makeCall()">Call</button>
 
     <script type="text/javascript">
 
@@ -45,7 +55,6 @@
                 subscribe_key : 'sub-c-7fe1cca8-e088-11e6-884c-0619f8945a4f',
             });
 
-        //phone.ready(function(){ form.username.style.background="#55ff5b"; });
             phone.receive(function(session){
                 session.connected(function(session) { video_out.appendChild(session.video); });
                 session.ended(function(session) { video_out.innerHTML=''; });
@@ -60,21 +69,6 @@
         }
 
     </script>
-
-
-<!--     <!-- Compiled and minified JavaScript -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
-      <div class="container">
-        <center>
-          <div class="row">
- -->           
-<!--           </div>
-        </center>
-      </div>
- -->
-
-    <div class="col s6"><button class="waves-effect waves-light orange darken-1 btn" onclick="login()">Ready?</button></div>
-    <div class="col s6"><button class="waves-effect waves-light orange darken-1 btn" onclick="makeCall()">Call</button></div>
 
 </body>
 </html>

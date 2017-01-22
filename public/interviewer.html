@@ -19,6 +19,7 @@
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 
+
     <script type="text/javascript">
         (function (root, factory) {
             if (typeof define === 'function' && define.amd) {
@@ -51,30 +52,32 @@
 
     </script>
 
+     <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+          
+
 </head>
 <body>
 
-  <!-- <nav>
-    <div class="nav-wrapper">
-      <a href="#" class="brand-logo" style="padding-left: 20px;">Higher Hire</a>
+
+    <div id="vid-box" center></div>
+
+    <div>
+        <h3>Analysis</h3>
+        <label>Anger:</label><label id="e1"></label>
+        <label>Contempt:</label><label id="e2"></label>
+        <label>Fear:</label><label id="e3"></label>
+        <label>Happiness:</label><label id="e4"></label>
+        <label>Surprise:</label><label id="e5"></label>
+        <label>Heart Rate:</label><label id="hr"></label>
     </div>
-  </nav> -->
 
-  <div id="vid-box"></div>
-
-  <!-- <div class="container">
-    <center>
-      <div class="row">
-        <div class="col s12"><h1 style="color: white; font-size: 100px; text-shadow: 3px 1px 10px rgba(150, 150, 150, 1);">Interviewer</h1></div>
-      </div>
-    </center>
-      <div class="row">
-        <div class="col s8"> -->
-          <button class="waves-effect waves-light orange darken-1 btn" onclick="login()">Ready?</button>
-          <button class="waves-effect waves-light orange darken-1 btn" onclick="makeCall()">call</button>
-          <label id="emotion">Emotions</label>
-          <label id="e1">Sample Emotion</label>
-          <label id="hr">Sample HR</label>
+    <button class="waves-effect waves-light orange darken-1 btn" onclick="login()">Ready?</button>
+    <button class="waves-effect waves-light orange darken-1 btn" onclick="makeCall()">call</button>
+          
 
     <script type="text/javascript">
 
@@ -130,8 +133,12 @@
                 type: 'POST',
                 success: function(data){
                     console.log(data);
-                    document.getElementById('e1').innerHTML = data[0].scores.happiness;
-                    //pp(data);
+                    document.getElementById('e1').innerHTML = data[0].scores.anger;
+                    document.getElementById('e2').innerHTML = data[0].scores.contempt;
+                    document.getElementById('e3').innerHTML = data[0].scores.fear;
+                    document.getElementById('e4').innerHTML = data[0].scores.happiness;
+                    document.getElementById('e5').innerHTML = data[0].scores.surprise;
+                    pp(data);
                 },
                 error: function(err) {
                     console.log("Error", err);
@@ -184,9 +191,6 @@
 
 
     </script>
-
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
 
 </body>
 </html>

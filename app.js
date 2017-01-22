@@ -5,6 +5,7 @@ var bodyParser = require("body-parser");
 const PORT = process.env.port || process.env.PORT || 3000;
 
 var app = express();
+var points = []
 
 app.use(bodyParser.urlencoded({ extended: false }))
  
@@ -28,8 +29,19 @@ app.get('/plot', (req, res) => {
 })
 
 app.post('/plot', (req, res) => {
-	console.log("req>>",req.body);
+	//console.log("req>>",req.body);
+	points.push(req.body);
+	
 })
+
+app.get('/points', (req, res) => {
+	if (points) {
+		res.send(points);	
+	} else {
+		res.send("Points Empty");
+	}
+})
+
 
 app.listen(PORT, (err) => {
 	if (err) {
