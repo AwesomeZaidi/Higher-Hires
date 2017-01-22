@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<script type="text/javascript" src="results.json"></script>
 	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 </head>
@@ -10,7 +11,8 @@
 
 	<script type="text/javascript">
 
-		var resultantArray;
+		var resultantArray = [0, 0, 0, 0, 0, 0, 0, 0];
+		var data;
 		
 		$.ajax({
                 url: "http://higherhires.herokuapp.com/points",
@@ -20,9 +22,10 @@
                 contentType: 'application/json',
                 processData: false,
                 type: 'GET',
-                success: function(data){
-                    console.log(data);
-                    resultantArray = data;
+                success: function(result){
+                    console.log(result);
+                    graph(result);
+                    //data = result;
                 },
                 error: function(err) {
                     console.log("Error", err);
@@ -37,10 +40,140 @@
 		  }
 		];
 
-		console.log("RESULT: " + resultantArray)
-		console.log("CONNECTED")
+		// var data = [
+		// 	  {
+		// 	    "anger": 3.32668533e-5,
+		// 	    "contempt": 0.0001910844,
+		// 	    "disgust": 9.032091e-6,
+		// 	    "fear": 3.54981637e-7,
+		// 	    "happiness": 8.15204e-5,
+		// 	    "neutral": 0.999538839,
+		// 	    "sadness": 0.000123832142,
+		// 	    "surprise": 2.20744441e-5
+		// 	  },
+		// 	  {
+		// 	    "anger": 0.0007797792,
+		// 	    "contempt": 0.002459031,
+		// 	    "disgust": 0.000302003522,
+		// 	    "fear": 0.000141881916,
+		// 	    "happiness": 0.00136922358,
+		// 	    "neutral": 0.98664993,
+		// 	    "sadness": 0.00683781831,
+		// 	    "surprise": 0.001460347
+		// 	  },
+		// 	  {
+		// 	    "anger": 9.156727e-5,
+		// 	    "contempt": 0.00229890877,
+		// 	    "disgust": 0.000732185843,
+		// 	    "fear": 1.18568014e-5,
+		// 	    "happiness": 0.06436707,
+		// 	    "neutral": 0.9290146,
+		// 	    "sadness": 0.00108412921,
+		// 	    "surprise": 0.00239966437
+		// 	  },
+		// 	  {
+		// 	    "anger": 0.007284281,
+		// 	    "contempt": 0.0103645688,
+		// 	    "disgust": 0.0403898619,
+		// 	    "fear": 0.001842749,
+		// 	    "happiness": 0.0388799459,
+		// 	    "neutral": 0.6777683,
+		// 	    "sadness": 0.00313487579,
+		// 	    "surprise": 0.220335439
+		// 	  },
+		// 	  {
+		// 	    "anger": 6.17914e-5,
+		// 	    "contempt": 0.000418716227,
+		// 	    "disgust": 2.6408643e-5,
+		// 	    "fear": 1.81281553e-6,
+		// 	    "happiness": 0.000456473,
+		// 	    "neutral": 0.9985099,
+		// 	    "sadness": 0.00040950923,
+		// 	    "surprise": 0.00011539508
+		// 	  },
+		// 	  {
+		// 	    "anger": 2.649103e-6,
+		// 	    "contempt": 0.000159461866,
+		// 	    "disgust": 1.08300746e-5,
+		// 	    "fear": 3.22154688e-6,
+		// 	    "happiness": 0.000162642638,
+		// 	    "neutral": 0.9986715,
+		// 	    "sadness": 0.00072429463,
+		// 	    "surprise": 0.000265409733
+		// 	  },
+		// 	  {
+		// 	    "anger": 0.0117052635,
+		// 	    "contempt": 6.78931e-7,
+		// 	    "disgust": 0.00183948048,
+		// 	    "fear": 0.000170896456,
+		// 	    "happiness": 0.892760754,
+		// 	    "neutral": 0.0005543132,
+		// 	    "sadness": 4.57090355e-5,
+		// 	    "surprise": 0.0929229
+		// 	  },
+		// 	  {
+		// 	    "anger": 0.00274290168,
+		// 	    "contempt": 0.08144286,
+		// 	    "disgust": 0.02326693,
+		// 	    "fear": 5.15548963e-5,
+		// 	    "happiness": 0.115705416,
+		// 	    "neutral": 0.759409,
+		// 	    "sadness": 0.00215934776,
+		// 	    "surprise": 0.0152219664
+		// 	  }
+		// 	];
 
-		Plotly.newPlot('tester', ppoints);
+			function graph(data) {
+				for(var i = 0; i < data.length; i++) {
+				for(var j = 0; j < 8; j++) {
+					if(i == 0) {
+						resultantArray[i] += data[i]["anger"];
+					}
+					else if(i == 1) {
+						resultantArray[i] += data[i]["contempt"];
+					}
+					else if(i == 2) {
+						resultantArray[i] += data[i]["disgust"];
+					}
+					else if(i == 3) {
+						resultantArray[i] += data[i]["fear"];
+					}
+					else if(i == 4) {
+						resultantArray[i] += data[i]["happiness"];
+					}
+					else if(i == 5) {
+						resultantArray[i] += data[i]["neutral"];
+					}
+					else if(i == 6) {
+						resultantArray[i] += data[i]["sadness"]
+					}
+					else if(i == 7) {
+						resultantArray[i] += data[i]["surprise"]
+					}
+				}
+			}
+
+			for(var i = 0; i < resultantArray.length; i++) {
+				resultantArray[i] *= 100;
+			}
+
+			var pieChartData = [{
+				values: resultantArray,
+				labels: ["Anger", "Contempt", "Disgust", "Fear", "Happiness", "Neutral", "Sadness", "Surprise"],
+				type: "pie"
+			}];
+
+			var chartSize =  {
+				height: 800,
+				width: 800
+			};
+
+
+			// console.log("RESULT: " + resultantArray)
+			// console.log("CONNECTED")
+
+			Plotly.newPlot('tester', pieChartData, chartSize);
+		}
 
 	</script>
 
