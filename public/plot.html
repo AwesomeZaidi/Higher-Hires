@@ -22,6 +22,7 @@
                 type: 'GET',
                 success: function(data){
                     console.log(data);
+                    resultantArray = data;
                 },
                 error: function(err) {
                     console.log("Error", err);
@@ -36,8 +37,8 @@
 		  }
 		];
 
-		resultantArray = data;
-		console.log("RESULT: " + consultantArray)
+		console.log("RESULT: " + resultantArray)
+		console.log("CONNECTED")
 
 		Plotly.newPlot('tester', ppoints);
 
