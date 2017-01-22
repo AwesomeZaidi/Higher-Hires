@@ -74,6 +74,14 @@
     </form>
 
     <script type="text/javascript">
+
+         document.addEventListener("DOMContentLoaded", function(event) {
+            console.log("DOM fully loaded and parsed");
+            setInterval(function(){ ss(); }, 3000);
+          });
+
+
+
         var video_out = document.getElementById("vid-box");
         function login(form) {
             var phone = window.phone = PHONE({
@@ -98,10 +106,9 @@
 
     </script>
 
-
-    <img id="my-screenshot" />
-    <button onclick="ss()">Shot!</button>
-    <canvas id="thecanvas"></canvas>
+        <img id="my-screenshot" />
+        <button onclick="ss()">Shot!</button>
+        <canvas id="thecanvas"></canvas>
 
     <script type="text/javascript">
         function ss() {
