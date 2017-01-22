@@ -15,8 +15,9 @@ font-family: 'Ubuntu', sans-serif;
 }
   </style>
  -->  <!-- Materialize -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
-<link rel="icon"
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+    <link rel="icon"
       type="image/png"
       href="https://raw.githubusercontent.com/arjunmehta/heartbeats/image/heartbeats.png">
 
@@ -55,20 +56,6 @@ font-family: 'Ubuntu', sans-serif;
                 canvas.getContext('2d').drawImage(video, 0, 0);
 
                 return canvas.toDataURL();
-                /*var dataUri = canvas.toDataURL('img/' + format);
-                var data = dataUri.split(',')[1];
-                var mimeType = dataUri.split(';')[0].slice(5)
-
-                var bytes = window.atob(data);
-                var buf = new ArrayBuffer(bytes.length);
-                var arr = new Uint8Array(buf);
-
-                for (var i = 0; i < bytes.length; i++) {
-                    arr[i] = bytes.charCodeAt(i);
-                }
-
-                var blob = new Blob([ arr ], { type: mimeType });
-                return { blob: blob, dataUri: dataUri, format: format };*/
             };
         }));
 
@@ -83,47 +70,7 @@ font-family: 'Ubuntu', sans-serif;
     </div>
   </nav> -->
 
-  <script type="text/javascript">
-
-       document.addEventListener("DOMContentLoaded", function(event) {
-          console.log("DOM fully loaded and parsed");
-
-          setInterval(function(){  if (document.getElementById('vid-box').firstChild) {
-              ss();
-              document.getElementById('hr').innerHTML = Math.floor((Math.random() * 30) + 55);
-          }
-      }, 5000);
-        });
-
-
-
-      var video_out = document.getElementById("vid-box");
-      function login() {
-          var phone = window.phone = PHONE({
-              //number        :  form.username.value || "Anonymous", // listen on username line else Anonymous
-              number        :  2, // listen on username line else Anonymous
-              publish_key   : 'pub-c-1f13c500-9e09-4bf2-93d8-a1950c332490',
-              subscribe_key : 'sub-c-408aedd4-e040-11e6-9090-0619f8945a4f',
-          });
-
-      //phone.ready(function(){ form.username.style.background="#55ff5b"; });
-      phone.receive(function(session){
-          session.connected(function(session) { video_out.appendChild(session.video); });
-          session.ended(function(session) { video_out.innerHTML=''; });
-      });
-      return false;   // So the form does not submit.
-      }
-
-      function makeCall(){
-          if (!window.phone) alert("Login First!");
-          else phone.dial(1);
-          return false;
-      }
-
-  </script>
-
-
-    <div id="vid-box"></div>
+  <div id="vid-box"></div>
 
   <!-- <div class="container">
     <center>
@@ -135,26 +82,9 @@ font-family: 'Ubuntu', sans-serif;
         <div class="col s8"> -->
           <button class="waves-effect waves-light orange darken-1 btn" onclick="login()">Ready?</button>
           <button class="waves-effect waves-light orange darken-1 btn" onclick="makeCall()">call</button>
-          
-<!--         </div>
-        <div class="col s4">
- -->          <center><h2>Dashboard</h2></center>
           <label id="emotion">Emotions</label>
           <label id="e1">Sample Emotion</label>
           <label id="hr">Sample HR</label>
-        <!-- </div>
-      </div>
-  </div> -->
-
-    <!-- <form name="loginForm" id="login" action="#" onsubmit="return login(this);">
-        <input type="text" name="username" id="username" placeholder="Pick a username!" />
-        <input type="submit" name="login_submit" value="Log In">
-    </form>
-
-    <form name="callForm" id="call" action="#" onsubmit="return makeCall(this);">
-        <input type="text" name="number" placeholder="Enter user to dial!" />
-        <input type="submit" value="Call"/>
-    </form> -->
 
     <script type="text/javascript">
 
@@ -211,7 +141,7 @@ font-family: 'Ubuntu', sans-serif;
                 success: function(data){
                     console.log(data);
                     document.getElementById('e1').innerHTML = data[0].scores.happiness;
-                    pp(data);
+                    //pp(data);
                 },
                 error: function(err) {
                     console.log("Error", err);
