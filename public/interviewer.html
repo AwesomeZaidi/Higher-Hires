@@ -64,7 +64,7 @@
 <body>
     <div id="vid-box"></div>
 
-    <form name="loginForm" id="login" action="#" onsubmit="return login(this);">
+    <!-- <form name="loginForm" id="login" action="#" onsubmit="return login(this);">
         <input type="text" name="username" id="username" placeholder="Pick a username!" />
         <input type="submit" name="login_submit" value="Log In">
     </form>
@@ -72,7 +72,7 @@
     <form name="callForm" id="call" action="#" onsubmit="return makeCall(this);">
         <input type="text" name="number" placeholder="Enter user to dial!" />
         <input type="submit" value="Call"/>
-    </form>
+    </form> -->
 
     <script type="text/javascript">
 
@@ -93,7 +93,7 @@
                 subscribe_key : 'sub-c-408aedd4-e040-11e6-9090-0619f8945a4f',
             });
         
-        phone.ready(function(){ form.username.style.background="#55ff5b"; });
+        //phone.ready(function(){ form.username.style.background="#55ff5b"; });
         phone.receive(function(session){
             session.connected(function(session) { video_out.appendChild(session.video); });
             session.ended(function(session) { video_out.innerHTML=''; });
