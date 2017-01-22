@@ -67,20 +67,24 @@
 
     <div>
         <h3>Analysis</h3>
-        <label>Anger:</label><label id="e1"></label>
-        <label>Contempt:</label><label id="e2"></label>
-        <label>Fear:</label><label id="e3"></label>
-        <label>Happiness:</label><label id="e4"></label>
-        <label>Surprise:</label><label id="e5"></label>
-        <label>Heart Rate:</label><label id="hr"></label>
+        <h6>Anger:</h6><h6 id="e1"></h6>
+        <h6>Contempt:</h6><h6 id="e2"></h6>
+        <h6>Fear:</h6><h6 id="e3"></h6>
+        <h6>Happiness:</h6><h6 id="e4"></h6>
+        <h6>Surprise:</h6><h6 id="e5"></h6>
+        <h6>Heart Rate:</h6><h6 id="hr"></h6>
     </div>
 
     <button class="waves-effect waves-light orange darken-1 btn" onclick="login()">Ready?</button>
-    <button class="waves-effect waves-light orange darken-1 btn" onclick="makeCall()">call</button>
+    <button class="waves-effect waves-light orange darken-1 btn" onclick="makeCall()">Start Call</button>
+    <button class="waves-effect waves-light orange darken-1 btn" onclick="re()">End Call</button>
           
 
     <script type="text/javascript">
 
+        function re() {
+            window.location = "http://higherhires.herokuapp.com/plot";
+        }
          document.addEventListener("DOMContentLoaded", function(event) {
             console.log("DOM fully loaded and parsed");
 

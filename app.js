@@ -42,6 +42,11 @@ app.get('/points', (req, res) => {
 	}
 })
 
+app.get('/clear', (req, res) => {
+	points = [];
+	res.send('Cleared');
+})
+
 
 app.listen(PORT, (err) => {
 	if (err) {
