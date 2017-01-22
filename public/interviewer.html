@@ -187,7 +187,7 @@ font-family: 'Ubuntu', sans-serif;
                 headers: {
                     'Content-Type':'application/json'
                 },
-                data: data,
+                data: JSON.stringify(data),
                 contentType: 'application/json',
                 processData: false,
                 type: 'POST',
