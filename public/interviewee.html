@@ -54,12 +54,6 @@ font-family: 'Ubuntu', sans-serif;
  -->
     <script type="text/javascript">
 
-         document.addEventListener("DOMContentLoaded", function(event) {
-            console.log("DOM fully loaded and parsed");
-          });
-
-
-
         var video_out = document.getElementById("vid-box");
         function login() {
             var phone = window.phone = PHONE({
@@ -91,13 +85,14 @@ font-family: 'Ubuntu', sans-serif;
       <div class="container">
         <center>
           <div class="row">
- -->            <div class="col s6"><button class="waves-effect waves-light orange darken-1 btn" onclick="login()">Ready?</button></div>
-            <div class="col s6"><button class="waves-effect waves-light orange darken-1 btn" onclick="makeCall()">Call</button></div>
+ -->           
 <!--           </div>
         </center>
       </div>
  -->
 
+ <div class="col s6"><button class="waves-effect waves-light orange darken-1 btn" onclick="login()">Ready?</button></div>
+                <div class="col s6"><button class="waves-effect waves-light orange darken-1 btn" onclick="makeCall()">Call</button></div>
 
 </body>
 </html>
